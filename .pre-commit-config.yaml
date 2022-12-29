@@ -19,4 +19,8 @@ repos:
     hooks:
       - id: isort
         name: isort
-        args: ["--line_length","119", "--conda-env", "./venv"]
+        args: ["-l 119", "--conda-env", "./venv"]
+  - repo: https://github.com/PyCQA/bandit
+    rev: '1.7.4'
+    hooks:
+    - id: bandit
