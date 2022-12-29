@@ -14,3 +14,9 @@ repos:
     hooks:
       - id: docformatter
         args: ["--in-place", "--pre-summary-newline"]
+  - repo: https://github.com/pycqa/isort
+    rev: 5.11.4
+    hooks:
+      - id: isort
+        name: isort
+        args: ["--line_length","119", "--conda-env", "./venv"]

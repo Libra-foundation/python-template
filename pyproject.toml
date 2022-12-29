@@ -4,11 +4,10 @@ version = "0.1.0"
 description = ""
 authors = ["Cyril Obrecht"]
 readme = "README.md"
-packages = [{include = "pull_request_comments"}]
+packages = [{include = "."}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-pygithub = "^1.57"
 
 [tool.poetry.group.dev]
 optional = true
