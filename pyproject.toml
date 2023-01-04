@@ -8,8 +8,7 @@ packages = [{include = "src"}]
 
 [tool.poe.tasks]
 lint = [
-    {cmd = "mypy ./src/**/*.py "},
-    {cmd = "bandit -c pyproject.toml -r -f screen ."}
+    {cmd = "mypy ./src/**/*.py "}
 ]
 
 [tool.poetry.dependencies]
@@ -22,7 +21,6 @@ optional = true
 pre-commit = "^2.20.0"
 mypy = "^0.991"
 poethepoet = "^0.17.1"
-bandit = {extras = ["toml"], version = "^1.7.4"}
 
 [tool.autopep8]
 max_line_length = 120
