@@ -7,10 +7,11 @@ readme = "README.md"
 packages = [{include = "src"}]
 
 [tool.poe.tasks]
-lint = [
-    {cmd = "mypy ./src/**/*.py "},
-    {cmd = "pylint -j 0 src --recursive=y --exit-zero"}
+lint.sequence = [
+    {cmd = "mypy ./src/**/*.py"},
+    {cmd = "pylint src"}
 ]
+lint.ignore_fail = "return_zero"
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -91,10 +92,12 @@ disable = [
     "deprecated-pragma",
     "use-symbolic-message-instead",
     "design",
-    "max-line-length",
-    "max-module-lines",
-    "max-nested-blocks",
-    "typecheck"
+    "line-too-long",
+    "too-many-lines",
+    "too-many-nested-blocks",
+    "typecheck",
+    "import-error",
+    "trailing-whitespace"
 ]
 
 [tool.pylint.method_args]
@@ -103,7 +106,7 @@ disable = [
 timeout-methods = ["requests.api.delete", "requests.api.get", "requests.api.head", "requests.api.options", "requests.api.patch", "requests.api.post", "requests.api.put", "requests.api.request"]
 
 [tool.pylint.reports]
-reports = true
+reports = false # TODO find a clean way to parametrise this.
 
 [tool.pylint.spelling]
 max-spelling-suggestions = 60
