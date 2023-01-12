@@ -1,0 +1,60 @@
+[tool.pylint.main]
+exit-zero = true
+jobs = 0
+recursive = true
+suggestion-mode = true
+# ignore-paths =
+
+[tool.pylint.basic]
+class-attribute-naming-style = "snake_case"
+
+[tool.pylint.classes]
+defining-attr-methods = ["__init__", "__new__", "__post_init__"]
+
+[tool.pylint.imports]
+# Deprecated modules which should not be used, separated by a comma.
+# deprecated-modules =
+
+# Force import order to recognize a module as part of the standard compatibility
+# libraries.
+# known-standard-library =
+
+[tool.pylint.logging]
+logging-format-style = "new"
+
+disable = [
+    "raw-checker-failed",
+    "bad-inline-option",
+    "locally-disabled",
+    "file-ignored",
+    "suppressed-message",
+    "useless-suppression",
+    "deprecated-pragma",
+    "use-symbolic-message-instead",
+    "design",
+    "max-line-length",
+    "max-module-lines",
+    "max-nested-blocks",
+    "typecheck"
+]
+
+[tool.pylint.method_args]
+# List of qualified names (i.e., library.method) which require a timeout
+# parameter e.g. 'requests.api.get,requests.api.post'
+timeout-methods = ["requests.api.delete", "requests.api.get", "requests.api.head", "requests.api.options", "requests.api.patch", "requests.api.post", "requests.api.put", "requests.api.request"]
+
+[tool.pylint.reports]
+reports = true
+
+[tool.pylint.spelling]
+max-spelling-suggestions = 60
+
+# List of comma separated words that should not be checked.
+# spelling-ignore-words =
+
+[tool.pylint.string]
+check-quote-consistency = true
+check-str-concat-over-line-jumps = true
+
+[tool.pylint.variables]
+init-import = true
