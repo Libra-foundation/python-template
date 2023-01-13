@@ -14,6 +14,8 @@ lint.sequence = [
 ]
 lint.ignore_fail = "return_zero"
 
+test = "pytest test/"
+
 [tool.poetry.dependencies]
 python = "^3.10"
 
@@ -26,6 +28,8 @@ mypy = "^0.991"
 poethepoet = "^0.17.1"
 pylint = "^2.15.10"
 bandit = {extras = ["toml"], version = "^1.7.4"}
+pytest = "^7.2.0"
+pytest-benchmark = "^4.0.0"
 
 [tool.autopep8]
 max_line_length = 120
