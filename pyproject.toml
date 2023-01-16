@@ -8,20 +8,20 @@ packages = [{ include = "src" }]
 
 [tool.poe.tasks]
 _pylint.cmd = "pylint ${files}"
-_pylint.args = [{ name = "files", default = "src", positional = true }]
+_pylint.args = [{ name = "files", default = "src", positional = true, multiple = true }]
 
 _mypy.cmd = "mypy ${files}"
-_mypy.args = [{ name = "files", default = "src", positional = true }]
+_mypy.args = [{ name = "files", default = "src", positional = true, multiple = true }]
 
 _bandit.cmd = "bandit -c pyproject.toml -r ${files}"
-_bandit.args = [{ name = "files", default = "src", positional = true }]
+_bandit.args = [{ name = "files", default = "src", positional = true, multiple = true }]
 
 lint.sequence = [
     { ref = "_mypy ${files}" },
     { ref = "_pylint ${files}" },
     { ref = "_bandit ${files}" }
 ]
-lint.args = [{ name = "files", positional = true }]
+lint.args = [{ name = "files", positional = true, multiple = true }]
 lint.ignore_fail = "return_zero"
 
 test = "pytest test/"
