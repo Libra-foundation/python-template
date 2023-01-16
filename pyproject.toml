@@ -2,16 +2,26 @@
 name = "name"
 version = "0.1.0"
 description = ""
-authors = [""]
+authors = []
 readme = "README.md"
-packages = [{include = "src"}]
+packages = [{ include = "src" }]
 
 [tool.poe.tasks]
+_pylint.cmd = "pylint ${files}"
+_pylint.args = [{ name = "files", default = "src", positional = true, multiple = true }]
+
+_mypy.cmd = "mypy ${files}"
+_mypy.args = [{ name = "files", default = "src", positional = true, multiple = true }]
+
+_bandit.cmd = "bandit -c pyproject.toml -r ${files}"
+_bandit.args = [{ name = "files", default = "src", positional = true, multiple = true }]
+
 lint.sequence = [
-    {cmd = "mypy ./src/**/*.py"},
-    {cmd = "pylint src"},
-    {cmd = "bandit -c pyproject.toml -r src/"}
+    { ref = "_mypy ${files}" },
+    { ref = "_pylint ${files}" },
+    { ref = "_bandit ${files}" }
 ]
+lint.args = [{ name = "files", positional = true, multiple = true }]
 lint.ignore_fail = "return_zero"
 
 test = "pytest test/"
@@ -27,7 +37,7 @@ pre-commit = "^2.20.0"
 mypy = "^0.991"
 poethepoet = "^0.17.1"
 pylint = "^2.15.10"
-bandit = {extras = ["toml"], version = "^1.7.4"}
+bandit = { extras = ["toml"], version = "^1.7.4" }
 pytest = "^7.2.0"
 pytest-benchmark = "^4.0.0"
 
@@ -61,7 +71,7 @@ show_column_numbers = true
 strict_concatenate = true
 
 [tool.bandit]
-tests = ["B402","B401","B310","B403","B404","B302","B321","B301","B312","B303","B306","B304","B305","B308","B307","B313","B320","B405","B409","B408","B407","B406","B410","B411","B101","B102","B201","B104","B107","B106","B105","B608","B108","B701","B609","B601","B501","B103","B507","B502","B504","B605","B606","B607","B602","B603","B112","B110","B702","B505","B506", "B323", "B610", "B703", "B611", "B412","B413"]
+tests = ["B402", "B401", "B310", "B403", "B404", "B302", "B321", "B301", "B312", "B303", "B306", "B304", "B305", "B308", "B307", "B313", "B320", "B405", "B409", "B408", "B407", "B406", "B410", "B411", "B101", "B102", "B201", "B104", "B107", "B106", "B105", "B608", "B108", "B701", "B609", "B601", "B501", "B103", "B507", "B502", "B504", "B605", "B606", "B607", "B602", "B603", "B112", "B110", "B702", "B505", "B506", "B323", "B610", "B703", "B611", "B412", "B413"]
 exclude_dirs = ["./test/*"]
 
 [tool.pylint.main]
