@@ -9,14 +9,15 @@ repos:
     rev: 'v2.0.0'
     hooks:
     -   id: autopep8
-  - repo: https://github.com/PyCQA/docformatter
-    rev: v1.5.0
-    hooks:
-      - id: docformatter
-        args: ["--in-place", "--pre-summary-newline"]
   - repo: https://github.com/pycqa/isort
     rev: 5.11.4
     hooks:
       - id: isort
         name: isort
         args: ["-l 119", "--conda-env", "./venv"]
+  - repo: https://github.com/hesstobi/pre-commit-pyment
+    rev: 'master'
+    hooks:
+    - id: pyment
+      exclude: ^tests/
+      args: ["-w", "-o", "numpydoc"]
