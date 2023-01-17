@@ -12,11 +12,11 @@ def add(left: int, right: int) -> int:
     left : int :
         Left element to add
     right : int :
-        right element to add  
+        right element to add 
 
     Returns
     -------
-
+        The sum of the two elements.
 
     """
     return left + right
