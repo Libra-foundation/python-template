@@ -16,15 +16,23 @@ _mypy.args = [{ name = "files", default = "src", positional = true, multiple = t
 _bandit.cmd = "bandit -c pyproject.toml -r ${files}"
 _bandit.args = [{ name = "files", default = "src", positional = true, multiple = true }]
 
+_pydoc.cmd = "pydocstyle ${files}"
+_pydoc.args = [{ name = "files", default = "src", positional = true, multiple = true }]
+
 lint.sequence = [
     { ref = "_mypy ${files}" },
     { ref = "_pylint ${files}" },
-    { ref = "_bandit ${files}" }
+    { ref = "_bandit ${files}" },
+    { ref = "_pydoc ${files}" }
 ]
 lint.args = [{ name = "files", positional = true, multiple = true }]
 lint.ignore_fail = "return_zero"
 
-test = "pytest test/"
+test = "pytest test/  --cache-clear"
+
+coverage = [
+    {cmd ="pytest --cov=src --cache-clear --cov-report term-missing --benchmark-disable test/"}
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -40,6 +48,12 @@ pylint = "^2.15.10"
 bandit = { extras = ["toml"], version = "^1.7.4" }
 pytest = "^7.2.0"
 pytest-benchmark = "^4.0.0"
+pytest-cov = "^4.0.0"
+pydocstyle = {extras = ["toml"], version = "^6.2.3"}
+
+[tool.pydocstyle]
+convention = "numpy"
+
 
 [tool.autopep8]
 max_line_length = 120
