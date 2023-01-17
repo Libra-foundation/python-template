@@ -20,7 +20,7 @@ author = 'John Doe'
 
 templates_path = ['_templates']
 extensions = ['sphinx.ext.napoleon',
-    "sphinx.ext.autodoc",]
+    'sphinx.ext.autodoc']
 
 # Napoleon settings
 napoleon_google_docstring = True

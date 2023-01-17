@@ -9,12 +9,13 @@ Welcome to MyProject's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
+   
+   modules.rst
 
 
 Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modules`
+* :ref:`modindex`
 * :ref:`search`
