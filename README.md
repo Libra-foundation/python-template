@@ -30,11 +30,11 @@ This template includes two really useful tools:
  - [pre-commit](https://github.com/pre-commit/pre-commit)
  - [poethepoet](https://github.com/nat-n/poethepoet)
 
-`pre-commit` allow you to run automatic commands before commiting. By default this template will export the dependencies in the pip format (this makes the creatation of workflow and the deployment of apps easier), format the code using `autopep8`, sort your imports thanks to `isort` and will format your docstrings. 
+`pre-commit` allow you to run automatic commands before commiting. By default this template will export the dependencies in the pip format (this makes the creatation of workflow and the deployment of apps easier), format the code using `autopep8` and will sort your imports thanks to `isort`
 
-`poethepoet` allow us to define usefull commands for you to use. We currently define 3 commands:
+`poethepoet` allow us to define usefull commands for you to use. We currently define 4 commands:
  - `poe lint [files]` : will pass your files through MyPy, Pylint and bandit, all of which have been pre-configured by ourselfs. This command will tell you were types are missing and show you potential future problems to help you produce your best code.
  - `poe test` : This command will run all tests. This template uses pytest with few plugins, one might interest you in particular : [pytest-benchmark](https://pytest-benchmark.readthedocs.io/en/latest/usage.html). This plugin allow you, if needed, to benchmark your project while testing it. This can be especially usefull if you need to monitor the performance of your application.
  - `poe coverage` : This command will produce a coverage report. It will help you diagnose wich part of your application isn't well covered by your tests. Since we need to run all tests to compute the coverage, the benchmarks have been disabled when running this particular command.
- 
+
 
