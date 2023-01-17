@@ -19,8 +19,11 @@ author = 'John Doe'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 templates_path = ['_templates']
-extensions = ['sphinx.ext.napoleon',
-    'sphinx.ext.autodoc']
+extensions = [
+    'sphinx.ext.napoleon',
+    'sphinx.ext.autodoc',
+    'sphinx.ext.viewcode'
+]
 
 # Napoleon settings
 napoleon_google_docstring = True
@@ -42,5 +45,5 @@ napoleon_attr_annotations = True
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'alabaster'
-html_static_path = ['_static']
+html_theme = 'sphinx_rtd_theme'
+# html_static_path = ['_static']

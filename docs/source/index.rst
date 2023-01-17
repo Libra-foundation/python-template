@@ -10,7 +10,7 @@ Welcome to MyProject's documentation!
    :maxdepth: 2
    :caption: Contents:
    
-   modules.rst
+   generated/modules.rst
 
 
 Indices and tables
