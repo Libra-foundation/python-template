@@ -24,7 +24,11 @@ lint.sequence = [
 lint.args = [{ name = "files", positional = true, multiple = true }]
 lint.ignore_fail = "return_zero"
 
-test = "pytest test/"
+test = "pytest test/  --cache-clear"
+
+coverage = [
+    {cmd ="pytest --cov=src --cache-clear --cov-report term-missing --benchmark-disable test/"}
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -40,6 +44,7 @@ pylint = "^2.15.10"
 bandit = { extras = ["toml"], version = "^1.7.4" }
 pytest = "^7.2.0"
 pytest-benchmark = "^4.0.0"
+pytest-cov = "^4.0.0"
 
 [tool.autopep8]
 max_line_length = 120
