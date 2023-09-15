@@ -1,0 +1,37 @@
+name: Example
+on:
+  pull_request:
+    branches: ["main", "development"]
+
+jobs:
+  comment:
+    permissions:
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+      - name: Run linters
+        run: |
+          echo "# MyPy's report" > message.md
+          mypy src >> message.md
+          echo "# Pylint's report" >> message.md
+          pylint src >> message.md
+          echo "# Bandit's report" >> message.md
+          bandit -c pyproject.toml -r src >> message.md
+          echo "# Pydocstyle's report" >> message.md
+          pydocstyle src >> message.md
+      - name: Comment the results on the PR
+        uses: Libra-foundation/Pull-Request-Comments@V1.1.1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            filename: message.md
+            tag: linting

@@ -1,0 +1,22 @@
+on:
+    # cronjob trigger every week while we are under heavy dev change this to every month down the line
+  schedule:
+  - cron:  "0 0 * * 0"
+  # manual trigger
+  workflow_dispatch:
+jobs:
+  repo-sync:
+    permissions: write-all
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      # To use this repository's private action, you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: actions-template-sync
+        uses: AndreasAugustin/actions-template-sync@v1.1.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_repo_path: Libra-foundation/python-template 
+          pr_title: "[DOWNSTREAM] merge changes from template repository"
