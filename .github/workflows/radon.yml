@@ -1,4 +1,4 @@
-name: Example
+name: Radon
 on:
   pull_request:
     branches: ["main", "development"]
@@ -23,7 +23,7 @@ jobs:
           radon cc src/ -j >cc.json
           radon mi src/ -j >mi.json
       - name: Comment the results on the PR
-        uses: Libra-foundation/radon-comment@V1.0
+        uses: Libra-foundation/radon-comment
         with:
           cc: "cc.json"
           mi: "mi.json"
