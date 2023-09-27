@@ -23,7 +23,7 @@ jobs:
           radon cc src/ -j >cc.json
           radon mi src/ -j >mi.json
       - name: Comment the results on the PR
-        uses: Libra-foundation/radon-comment@development
+        uses: Libra-foundation/radon-comment@v0.1
         with:
           cc: "cc.json"
           mi: "mi.json"
